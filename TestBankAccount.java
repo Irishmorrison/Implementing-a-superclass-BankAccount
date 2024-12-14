@@ -1,21 +1,23 @@
-java
-public class TestBankAccount {
+package MyProject;
+
+public class BankAccountTest {
+
+
     public static void main(String[] args) {
-        // Create a Bank Account
         BankAccount account = new BankAccount();
         account.setFirstName("John");
         account.setLastName("Doe");
-        account.setAccountID(123456);
-        account.deposit(500);
+        account.setAccountId(12345);
+        account.deposit(1000);
         account.accountSummary();
 
-        // Create a Checking Account
-        CheckingAccount checkingAccount = new CheckingAccount(1.5);
+        CheckingAccount checkingAccount = new CheckingAccount();
         checkingAccount.setFirstName("Jane");
-        checkingAccount.setLastName("Smith");
-        checkingAccount.setAccountID(789012);
-        checkingAccount.deposit(200);
-        checkingAccount.processWithdrawal(250); // Should trigger overdraft
+        checkingAccount.setLastName("Doe");
+        checkingAccount.setAccountId(54321);
+        checkingAccount.setInterestRate(0.05);
+        checkingAccount.deposit(500);
+        checkingAccount.processWithdrawal(600); // Overdraft
         checkingAccount.displayAccount();
     }
 }
