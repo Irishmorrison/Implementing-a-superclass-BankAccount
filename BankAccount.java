@@ -1,22 +1,20 @@
-java
+package MyProject;
+
 public class BankAccount {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub 
+}
     private String firstName;
     private String lastName;
-    private int accountID;
+    private int accountId;
     private double balance;
 
     public BankAccount() {
         this.balance = 0.0;
     }
 
-    public void deposit(double amount) {
-        this.balance += amount;
-    }
-
-    public void withdrawal(double amount) {
-        this.balance -= amount;
-    }
-
+    // Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -33,22 +31,34 @@ public class BankAccount {
         this.lastName = lastName;
     }
 
-    public int getAccountID() {
-        return accountID;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public double getBalance() {
         return balance;
     }
 
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public void withdrawal(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+
     public void accountSummary() {
         System.out.println("Account Summary:");
         System.out.println("Name: " + firstName + " " + lastName);
-        System.out.println("Account ID: " + accountID);
+        System.out.println("Account ID: " + accountId);
         System.out.println("Balance: $" + balance);
     }
 }
