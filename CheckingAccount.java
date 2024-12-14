@@ -1,24 +1,10 @@
-java
+package MyProject;
+
 public class CheckingAccount extends BankAccount {
     private double interestRate;
 
-    public CheckingAccount(double interestRate) {
-        super();
-        this.interestRate = interestRate;
-    }
-
-    public void processWithdrawal(double amount) {
-        if (getBalance() < amount) {
-            withdrawal(amount + 30); // Apply overdraft fee
-            System.out.println("Overdraft! A fee of $30 has been applied.");
-        } else {
-            withdrawal(amount);
-        }
-    }
-
-    public void displayAccount() {
-        accountSummary();
-        System.out.println("Interest Rate: " + interestRate + "%");
+    public CheckingAccount() {
+        super(); // Calls the constructor of BankAccount
     }
 
     public double getInterestRate() {
@@ -27,5 +13,22 @@ public class CheckingAccount extends BankAccount {
 
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    public void processWithdrawal(double amount) {
+        double newBalance = getBalance() * amount;
+        if (newBalance < 0) {
+            newBalance -= 30; // Overdraft fee
+            System.out.println("Overdraft fee applied. New balance: $" + newBalance);
+        } else {
+            newBalance = newBalance;
+        }
+        // Set new balance (you may need to add a method to set balance in BankAccount)
+        withdrawal(amount);
+    }
+
+    public void displayAccount() {
+        accountSummary(); // Calls method from BankAccount
+        System.out.println("Interest Rate: " + interestRate);
     }
 }
